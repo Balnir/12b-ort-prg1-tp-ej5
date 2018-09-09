@@ -14,18 +14,16 @@ public class Prueba {
 	public ArrayList<Ubicacion> encontrarPalabra(String palabra) {		
 		char [] aPalabra = palabra.toCharArray();
 		ArrayList<Ubicacion> ubicaciones = new ArrayList<Ubicacion>();
-		int x = 0, y = 0, p = 0, q = 0 , a = 0, b = 0;
+		int x = 0, y = 0, a = 0, b = 0;
 		for (int i = 0; i < Matriz.length; i++) {
 			for (int j = 0; j < Matriz[0].length; j++) {
 				x = i;
 				y = j;
-				p = i;
-				q = j;
 				a = i;
 				b = j;
 				if (Matriz[i][j] == aPalabra[0]) {
 					busquedaHorizontal(x,y,i,j,aPalabra,ubicaciones);
-					busquedaVertical(p,q,i,j,aPalabra,ubicaciones);
+					busquedaVertical(x,y,i,j,aPalabra,ubicaciones);
 					busquedaDiagonal(a,b,x,y,i,j,aPalabra,ubicaciones);
 				}
 			}
@@ -51,12 +49,12 @@ public class Prueba {
 		}
 		
 	}
-	private void busquedaVertical(int p, int q, int i, int j, char[] aPalabra, 
+	private void busquedaVertical(int x, int y, int i, int j, char[] aPalabra, 
 			ArrayList<Ubicacion> ubicaciones) {
 		int k=0;
 		boolean verCheck = false;
-		while (p < Matriz.length &&  p < i + aPalabra.length && !verCheck) {
-			if(Matriz[p][q] == aPalabra[k] ) {
+		while (x < Matriz.length &&  x < i + aPalabra.length && !verCheck) {
+			if(Matriz[x][y] == aPalabra[k] ) {
 				k++;
 				if(k == aPalabra.length) {
 					verCheck = true;
@@ -64,7 +62,7 @@ public class Prueba {
 					ubicaciones.add(ub);
 				}
 			}
-			p++;
+			x++;
 		}
 		
 	}
